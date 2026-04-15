@@ -9,28 +9,22 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Main container for all page content -->
+  <!-- Main container for todo app -->
   <main class="container">
-    <!-- Page title -->
-    <h1 id="pageTitle">Welcome to My First Web App</h1>
+    <!-- App title -->
+    <h1>My Todo List</h1>
 
-    <!-- Message text that will change when button is clicked -->
-    <p id="message">Click the button to see a new message.</p>
+    <!-- Small helper text -->
+    <p class="subtitle">Add your tasks and keep track of your day.</p>
 
-    <!-- Button user clicks -->
-    <button id="changeTextBtn">Change Text</button>
-
-    <!-- Input area for changing the title -->
-    <div class="title-editor">
-      <!-- User enters a new title here -->
-      <input
-        id="titleInput"
-        type="text"
-        placeholder="Type a new title"
-      />
-      <!-- Confirm button applies the new title -->
-      <button id="confirmTitleBtn">Confirm Title</button>
+    <!-- Input row for adding new tasks -->
+    <div class="input-row">
+      <input id="taskInput" type="text" placeholder="Enter a new task" />
+      <button id="addTaskBtn">Add Task</button>
     </div>
+
+    <!-- Task list will be shown here -->
+    <ul id="taskList"></ul>
   </main>
 
   <!-- Link to our JavaScript file -->

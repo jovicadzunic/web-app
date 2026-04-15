@@ -5,62 +5,136 @@
   padding: 0;
 }
 
-/* Center content on the page */
+/* Modern color palette */
+:root {
+  --bg-start: #f8fafc;
+  --bg-end: #e2e8f0;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --border: #dbe3ee;
+}
+
+/* Center app on the page */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
-  color: #1f2937;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(160deg, var(--bg-start), var(--bg-end));
+  color: var(--text-main);
   min-height: 100vh;
   display: grid;
   place-items: center;
+  padding: 16px;
 }
 
-/* Style the main content box */
+/* Card-style app container */
 .container {
-  background-color: #ffffff;
-  padding: 24px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  max-width: 420px;
+  background-color: var(--card-bg);
+  width: min(100%, 560px);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
 }
 
-/* Space below title */
+/* Title spacing */
 h1 {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  font-size: 1.75rem;
 }
 
-/* Space below message */
-#message {
-  margin-bottom: 16px;
+/* Short helper text */
+.subtitle {
+  margin-bottom: 18px;
+  color: var(--text-muted);
 }
 
-/* Basic button styling */
-button {
-  background-color: #2563eb;
-  color: #ffffff;
-  border: none;
-  padding: 10px 16px;
+/* Input and button in one row */
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Input style */
+input {
+  padding: 11px 12px;
+  border: 1px solid var(--border);
   border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Input focus state */
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
+}
+
+/* Base button style */
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-/* Slight color change on hover */
-button:hover {
-  background-color: #1d4ed8;
+/* Add task button */
+#addTaskBtn {
+  background-color: var(--primary);
 }
 
-/* Wrapper for input + confirm button */
-.title-editor {
-  margin-top: 16px;
+/* Add task hover */
+#addTaskBtn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Task list styles */
+#taskList {
+  list-style: none;
   display: grid;
   gap: 10px;
 }
 
-/* Simple input styling */
-input {
-  padding: 10px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 14px;
+/* One task row */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: #f8fafc;
+}
+
+/* Task text */
+.task-text {
+  word-break: break-word;
+}
+
+/* Delete button style */
+.delete-btn {
+  background-color: var(--danger);
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+/* Delete hover */
+.delete-btn:hover {
+  background-color: var(--danger-hover);
+}
+
+/* Better mobile layout */
+@media (max-width: 480px) {
+  .input-row {
+    grid-template-columns: 1fr;
+  }
 }
