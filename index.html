@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page setup -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beginner Web App</title>
+  <!-- Link to our CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Main container for all page content -->
+  <main class="container">
+    <!-- Page title -->
+    <h1 id="pageTitle">Welcome to My First Web App</h1>
+
+    <!-- Message text that will change when button is clicked -->
+    <p id="message">Click the button to see a new message.</p>
+
+    <!-- Button user clicks -->
+    <button id="changeTextBtn">Change Text</button>
+
+    <!-- Input area for changing the title -->
+    <div class="title-editor">
+      <!-- User enters a new title here -->
+      <input
+        id="titleInput"
+        type="text"
+        placeholder="Type a new title"
+      />
+      <!-- Confirm button applies the new title -->
+      <button id="confirmTitleBtn">Confirm Title</button>
+    </div>
+  </main>
+
+  <!-- Link to our JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
