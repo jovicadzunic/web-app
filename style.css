@@ -1,239 +1,305 @@
-/* Basic reset for cleaner layout */
+/* Global reset for predictable sizing and spacing */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* NVIDIA-inspired color palette and typography system */
 :root {
-  --nvidia-green: #76b900;
-  --black: #000000;
-  --white: #ffffff;
-  --near-black: #1a1a1a;
-  --gray-300: #a7a7a7;
-  --gray-500: #757575;
-  --gray-border: #5e5e5e;
-  --link-hover: #3860be;
-  --button-hover: #1eaedb;
-  --button-active: #007fff;
-  --button-active-border: #003eff;
-  --danger: #e52020;
-  --danger-hover: #650b0b;
-  --card-shadow: rgba(0, 0, 0, 0.3) 0 0 5px 0;
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #191c1f;
+  --muted: #505a63;
+  --border: #d8dde6;
+  --accent: #4f55f1;
+  --danger: #e23b4a;
 }
 
-/* Page foundation and dark/light contrast */
 body {
-  font-family: "NVIDIA-EMEA", Arial, Helvetica, sans-serif;
-  background-color: var(--black);
-  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
-  padding: 0 16px 48px;
 }
 
-.top-nav {
-  position: sticky;
-  top: 0;
-  background: var(--black);
-  border-bottom: 1px solid var(--gray-border);
-  z-index: 10;
+.app-header {
+  background: #191c1f;
+  color: #ffffff;
 }
 
-.nav-content {
-  width: min(100%, 1200px);
+.header-inner,
+.app-main {
+  width: min(1100px, 94%);
   margin: 0 auto;
-  min-height: 64px;
+}
+
+.header-inner {
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header-inner h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.app-main {
+  padding: 28px 0 48px;
+}
+
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.control-group {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.brand-label {
-  color: var(--nvidia-green);
-  border: 1px solid var(--nvidia-green);
-  border-radius: 2px;
-  padding: 4px 8px;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.5;
-  text-transform: uppercase;
+#calendarTitle {
+  font-size: 1.3rem;
 }
 
-.brand-name {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.43;
-}
-
-/* Main light surface */
-.container {
-  background-color: var(--white);
-  color: var(--black);
-  width: min(100%, 760px);
-  margin: 48px auto 0;
-  padding: 24px;
-  border-radius: 2px;
-  box-shadow: var(--card-shadow);
-}
-
-.section-label {
-  font-size: 14px;
-  line-height: 1.43;
-  font-weight: 700;
-  color: var(--nvidia-green);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-h1 {
-  margin-bottom: 10px;
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-.subtitle {
-  margin-bottom: 24px;
-  color: var(--gray-500);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.input-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 13px;
-  margin-bottom: 24px;
-}
-
-input {
-  min-height: 46px;
-  padding: 11px 13px;
-  border: 1px solid var(--gray-border);
-  border-radius: 2px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: inherit;
-}
-
-input:focus {
-  outline: 2px solid var(--black);
-  border-color: var(--nvidia-green);
+.view-switches {
+  display: flex;
+  gap: 8px;
 }
 
 button {
-  background: transparent;
-  border-radius: 2px;
-  border: 2px solid var(--nvidia-green);
-  color: var(--black);
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.25;
-  padding: 11px 14px;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  border: none;
+  border-radius: 9999px;
+  padding: 11px 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
-button:hover {
-  background: var(--button-hover);
-  color: var(--white);
+.primary-btn {
+  background: var(--accent);
+  color: #ffffff;
 }
 
-button:active {
-  background: var(--button-active);
-  border-color: var(--button-active-border);
-  color: var(--white);
+.ghost-btn,
+.view-btn {
+  background: #e9edf6;
+  color: var(--text);
 }
 
-button:focus-visible {
-  outline: 2px solid var(--black);
-  opacity: 0.9;
+.view-btn.active {
+  background: var(--text);
+  color: #ffffff;
 }
 
-#taskList {
-  list-style: none;
+.calendar-container {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  min-height: 560px;
+}
+
+.month-grid {
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
 }
 
-.task-item {
+.weekday-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+  padding: 6px 0;
+}
+
+.day-cell {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  min-height: 120px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.day-number {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.muted-day .day-number {
+  color: #9ea6b3;
+}
+
+.week-view,
+.day-view {
+  display: grid;
+  gap: 8px;
+}
+
+.week-row,
+.day-row {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fbfcff;
+}
+
+.row-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.appt-list {
+  display: grid;
+  gap: 6px;
+}
+
+.appointment-chip {
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  text-align: left;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  width: 100%;
+}
+
+.meeting-consultation {
+  background: #dbe3ff;
+}
+
+.meeting-follow-up {
+  background: #d9f5eb;
+}
+
+.meeting-internal {
+  background: #fff1d7;
+}
+
+.meeting-client {
+  background: #ffe0e6;
+}
+
+.meeting-other {
+  background: #ececf4;
+}
+
+.empty-state {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 23, 28, 0.5);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-card {
+  width: min(560px, 100%);
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 18px;
+}
+
+.modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  padding: 16px;
-  border: 1px solid var(--gray-border);
-  border-radius: 2px;
-  box-shadow: var(--card-shadow);
+  margin-bottom: 14px;
 }
 
-.task-text {
-  word-break: break-word;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.67;
-  color: var(--near-black);
+.icon-btn {
+  background: #f0f2f7;
+  border-radius: 10px;
+  padding: 8px 10px;
 }
 
-.delete-btn {
-  border: 1px solid var(--danger);
+.appointment-form {
+  display: grid;
+  gap: 12px;
+}
+
+.appointment-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.time-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.form-error {
   color: var(--danger);
-  font-size: 14.4px;
-  line-height: 1;
-  letter-spacing: 0.144px;
-  flex-shrink: 0;
+  font-size: 0.9rem;
 }
 
-.delete-btn:hover {
-  background-color: var(--danger-hover);
-  color: var(--white);
-  border-color: var(--danger-hover);
+.details-content {
+  display: grid;
+  gap: 8px;
+  color: #20242a;
 }
 
-a {
-  color: var(--black);
-  text-decoration: underline;
-  text-decoration-color: var(--nvidia-green);
-  text-decoration-thickness: 2px;
+.details-content p strong {
+  color: #000000;
 }
 
-a:hover {
-  color: var(--link-hover);
-  text-decoration: none;
+.hidden {
+  display: none;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 24px;
+@media (max-width: 760px) {
+  .header-inner h1 {
+    font-size: 1.4rem;
   }
 
-  .container {
-    margin-top: 32px;
-    padding: 16px;
+  .calendar-container {
+    padding: 10px;
   }
-}
 
-@media (max-width: 600px) {
-  .input-row {
+  .day-cell {
+    min-height: 95px;
+  }
+
+  .time-row {
     grid-template-columns: 1fr;
-  }
-
-  button,
-  input {
-    width: 100%;
-  }
-
-  .task-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .delete-btn {
-    width: auto;
   }
 }

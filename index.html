@@ -1,40 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic page setup -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beginner Web App</title>
-  <!-- Link to our CSS file -->
+  <title>Appointment Scheduler</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="top-nav">
-    <div class="nav-content">
-      <span class="brand-name">Beginner Web App</span>
+  <header class="app-header">
+    <div class="header-inner">
+      <h1>Appointment Scheduler</h1>
+      <button id="newAppointmentBtn" class="primary-btn">New Appointment</button>
     </div>
   </header>
 
-  <!-- Main container for todo app -->
-  <main class="container">
-    <p class="section-label">TASK ORGANIZER</p>
-    <!-- App title -->
-    <h1>My Todo List</h1>
+  <main class="app-main">
+    <section class="calendar-controls">
+      <div class="control-group">
+        <button id="prevBtn" class="ghost-btn" aria-label="Go to previous period">Previous</button>
+        <h2 id="calendarTitle">Calendar</h2>
+        <button id="nextBtn" class="ghost-btn" aria-label="Go to next period">Next</button>
+      </div>
 
-    <!-- Small helper text -->
-    <p class="subtitle">Add your tasks and keep track of your day.</p>
+      <div class="view-switches" role="tablist" aria-label="Calendar views">
+        <button class="view-btn active" data-view="month">Month</button>
+        <button class="view-btn" data-view="week">Week</button>
+        <button class="view-btn" data-view="day">Day</button>
+      </div>
+    </section>
 
-    <!-- Input row for adding new tasks -->
-    <div class="input-row">
-      <input id="taskInput" type="text" placeholder="Enter a new task" />
-      <button id="addTaskBtn">Add Task</button>
-    </div>
-
-    <!-- Task list will be shown here -->
-    <ul id="taskList"></ul>
+    <!-- Calendar content is rendered by JavaScript -->
+    <section id="calendarContainer" class="calendar-container"></section>
   </main>
 
-  <!-- Link to our JavaScript file -->
+  <!-- Modal for creating a new appointment -->
+  <div id="appointmentModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Create Appointment</h3>
+        <button id="closeModalBtn" class="icon-btn" aria-label="Close modal">X</button>
+      </div>
+
+      <form id="appointmentForm" class="appointment-form">
+        <label>
+          Title / Name *
+          <input type="text" id="titleInput" required />
+        </label>
+
+        <label>
+          Date *
+          <input type="date" id="dateInput" required />
+        </label>
+
+        <div class="time-row">
+          <label>
+            Start Time *
+            <input type="time" id="startTimeInput" required />
+          </label>
+          <label>
+            End Time *
+            <input type="time" id="endTimeInput" required />
+          </label>
+        </div>
+
+        <label>
+          Meeting Type *
+          <select id="meetingTypeInput" required>
+            <option value="">Select a type</option>
+            <option value="Consultation">Consultation</option>
+            <option value="Follow-up">Follow-up</option>
+            <option value="Internal meeting">Internal meeting</option>
+            <option value="Client meeting">Client meeting</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+
+        <label>
+          Description / Notes
+          <textarea id="notesInput" rows="3" placeholder="Optional notes"></textarea>
+        </label>
+
+        <p id="formError" class="form-error hidden"></p>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelBtn" class="ghost-btn">Cancel</button>
+          <button type="submit" class="primary-btn">Save Appointment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for viewing appointment details -->
+  <div id="detailsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="detailsTitle">Appointment Details</h3>
+        <button id="closeDetailsBtn" class="icon-btn" aria-label="Close details">X</button>
+      </div>
+
+      <div id="detailsContent" class="details-content"></div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
